@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
+AXIS_UPPER_LIMIT = 20
+AXIS_LOWER_LIMIT = -20
+
 # creates a Poly3DCollection from a matrix and returns it
 def create_poly(matrix):
     
@@ -33,37 +36,20 @@ def display_objects(*matrices):
     ax = fig.add_subplot(projection='3d')
 
     # create a Poly3DCollection for each object and add it to the plot
-    # also find the largest and smallest values in the matrices for later use
-    minVal = np.amax(matrices[0])
-    maxVal = np.amin(matrices[0])
     for matrix in matrices:
         poly = create_poly(matrix)
         ax.add_collection3d(poly)
 
-        minVal = min(minVal, np.amin(matrix))
-        maxVal = max(minVal, np.amax(matrix))
-
-    # determine values used for diagram limits
-    size = abs(maxVal - minVal)
-    mid = (maxVal + minVal) / 2
-    lim1 = mid - size
-    lim2 = mid + size
-
     # set the limits of the plot diagram
-    ax.set_xlim(-20, 20)
-    ax.set_ylim(-20, 20)
-    ax.set_zlim(-20, 20)
+    ax.set_xlim(AXIS_LOWER_LIMIT, AXIS_UPPER_LIMIT)
+    ax.set_ylim(AXIS_LOWER_LIMIT, AXIS_UPPER_LIMIT)
+    ax.set_zlim(AXIS_LOWER_LIMIT, AXIS_UPPER_LIMIT)
 
-    zeros = np.linspace(0, 0, 50)
-    axis = np.linspace(lim1 - 10, lim2 + 10, 50)
+    zeros = np.linspace(0, 0, 2)
+    axis = np.linspace(AXIS_LOWER_LIMIT * 1.5, AXIS_UPPER_LIMIT * 1.5, 2)
+    ax.plot3D(axis, zeros, zeros, 'green') # x axis
+    ax.plot3D(zeros, axis, zeros, 'purple') # y axis
     ax.plot3D(zeros, zeros, axis, 'red') # z axis
-    ax.plot3D(zeros, axis, zeros, 'red') # y axis
-    ax.plot3D(axis, zeros, zeros, 'red') # x axis
-
+    
     # show the plot
     plt.show()
-
-    
-
-    
-    
