@@ -50,9 +50,9 @@ def display_objects(*matrices):
     lim2 = mid + size
 
     # set the limits of the plot diagram
-    ax.set_xlim(lim1, lim2)
-    ax.set_ylim(lim1, lim2)
-    ax.set_zlim(lim1, lim2)
+    ax.set_xlim(-20, 20)
+    ax.set_ylim(-20, 20)
+    ax.set_zlim(-20, 20)
 
     zeros = np.linspace(0, 0, 50)
     axis = np.linspace(lim1 - 10, lim2 + 10, 50)
