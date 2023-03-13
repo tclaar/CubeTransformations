@@ -1,5 +1,5 @@
 # CubeTransformations
-Jupyter notebook example of transformations on a 3D cube. 
+Jupyter notebook example of transformations on a 3D cube. Contributors: Trae Claar, Chase Dolan, Devin Peevy
 
 The notebook can be run either locally after downloading the file or by using Binder, linked below: <br>
 
